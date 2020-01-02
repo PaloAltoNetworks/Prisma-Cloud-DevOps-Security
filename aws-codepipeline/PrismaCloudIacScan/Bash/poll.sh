@@ -122,15 +122,15 @@ decide_job_status(){
       
       if [[ $stats != null ]] ;then
             if [[ "$in_oper" == "or" && ( "$resp_high" -ge "$in_high" || "$resp_med" -ge "$in_med" || "$resp_low" -ge "$in_low"  ) ]] ;then
-                echo_ts "Prisma Cloud IaC scan failed with issues as security issues count (high: $resp_high, medium: $resp_med, Low: $resp_low) meets or exceeds failure criteria (high: $in_high, medium: $in_med, Low: $in_low)"
+                echo_ts "Prisma Cloud IaC scan failed with issues as security issues count (High: $resp_high, Medium: $resp_med, Low: $resp_low) meets or exceeds failure criteria (High: $in_high, Medium: $in_med, Low: $in_low)"
                 update_job_status "$job_json" "failure"
             
             elif [[ "$in_oper" == "and" && ( "$resp_high" -ge "$in_high" && "$resp_med" -ge "$in_med" && "$resp_low" -ge "$in_low" ) ]]; then
-               echo_ts "Prisma Cloud IaC scan failed with issues as security issues count (high: $resp_high, medium: $resp_med, Low: $resp_low) meets or exceeds failure criteria (high: $in_high, medium: $in_med, Low: $in_low)"
+               echo_ts "Prisma Cloud IaC scan failed with issues as security issues count (High: $resp_high, Medium: $resp_med, Low: $resp_low) meets or exceeds failure criteria (High: $in_high, Medium: $in_med, Low: $in_low)"
                update_job_status "$job_json" "failure"
             
             else
-                echo_ts "Prisma Cloud IaC scan succeeded with issues as security issues count (high: $resp_high, medium: $resp_med, Low: $resp_low) does not exceed failure criteria (high: $in_high, medium: $in_med, Low: $in_low)"
+                echo_ts "Prisma Cloud IaC scan succeeded with issues as security issues count (High: $resp_high, Medium: $resp_med, Low: $resp_low) does not exceed failure criteria (High: $in_high, Medium: $in_med, Low: $in_low)"
                 update_job_status "$job_json" "success"
             fi
       
