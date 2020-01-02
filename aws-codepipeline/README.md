@@ -16,3 +16,4 @@ This extension enables Prisma Cloud Infrastructure-as-Code (IaC) scan and contai
       
       
   <h2>Prisma Cloud Compute Image Scanning</h2>
+    /buildspec.yml includes details on how to use twistcli when using AWS CodeBuild
