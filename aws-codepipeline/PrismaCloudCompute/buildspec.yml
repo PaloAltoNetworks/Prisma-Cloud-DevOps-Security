@@ -1,0 +1,40 @@
+version: 0.2
+
+# In this example, we're using environment variables
+# to store the username & password of our Prisma Cloud Compute CI user account
+# and the URL to our console
+
+# Username:  The Prisma Cloud Compute user with the CI User role
+# Password:  The password for this user account
+# Prisma_Cloud_Compute_Console_URL:  The base URL for the console -- http://console.<my_company>.com:8083 -- without a trailing /
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Downloading twistcli
+      - curl -k -u $Username:$Password --output ./twistcli $Prisma_Cloud_Compute_Console_URL/api/v1/util/twistcli
+      - chmod +x ./twistcli
+      - echo Scanning with twistcli
+      
+      # Run the scan with twistcli, providing detailed results in CodeBuild and
+      # pushing the results to the Twistlock console.
+      # --details returns all vulnerabilities & compliance issues rather than just summaries.
+      # -address points to our Twistlock console
+      # -u and -p provide credentials for the console.  These creds only need the CI User role.
+      # Finally, we provide the name of the image we built with 'docker build', above.
+      
+      - ./twistcli images scan --details -address $Prisma_Cloud_Compute_Console_URL -u $Username -p $Password $IMAGE_NAME:$IMAGE_TAG
+
+      # Add --vulnerability-threshold and/or --compliance-threshold to this command to
+      # fail builds based on the thresholds.
+      # See twistcli documentation for more details.
+

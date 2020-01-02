@@ -1,0 +1,104 @@
+{
+    "category": "Test",
+    "provider": "Prisma-Cloud-IaC-Scan",
+    "version": "1",
+    "settings": {
+        "entityUrlTemplate": "https://s3.console.aws.amazon.com/s3/buckets/{Config:S3BucketName}/?region={Config:S3BucketRegion}&tab=overview",
+        "executionUrlTemplate": "https://s3.console.aws.amazon.com/s3/buckets/{Config:S3BucketName}/?region={Config:S3BucketRegion}&tab=overview"
+    },
+    
+    "configurationProperties": [
+         {
+            "name": "S3BucketName",
+            "required": true,
+            "key": true,
+            "secret": false,
+            "queryable": false,
+            "description": "The S3 bucket name.",
+            "type": "String"
+        },
+        {
+            "name": "S3BucketRegion",
+            "required": true,
+            "key": true,
+            "secret": false,
+            "queryable": false,
+            "description": "The region where the S3 bucket specified",
+            "type": "String"
+        },
+        {
+            "name": "Prisma_Cloud_API_URL",
+            "required": true,
+            "key": true,
+            "secret": false,
+            "queryable": false,
+            "description": "Prisma Cloud server URL",
+            "type": "String"
+
+         },
+         {
+            "name": "Access_Key",
+            "required": true,
+            "key": true,
+            "secret": false,
+            "queryable": false,
+            "description": "Prisma Cloud access key",
+            "type": "String"
+
+         },
+         {
+            "name": "Secret_Key",
+            "required": true,
+            "key": true,
+            "secret": true,
+            "queryable": false,
+            "description": "Prisma Cloud secret key",
+            "type": "String"
+
+         },
+         {
+            "name": "Failure_Criteria_High_Severity",
+            "required": true,
+            "key": true,
+            "secret": false,
+            "queryable": false,
+            "description": "Provide failure threshold for high severity security issues",
+            "type": "Number"
+         },
+         {
+            "name": "Failure_Criteria_Medium_Severity",
+            "required": true,
+            "key": true,
+            "secret": false,
+            "queryable": false,
+            "description": "Provide failure threshold for medium severity security issues.",
+            "type": "Number"
+         },
+         {
+            "name": "Failure_Criteria_Low_Severity",
+            "required": true,
+            "key": true,
+            "secret": false,
+            "queryable": false,
+            "description": "Provide failure threshold for low severity security issues.",
+            "type": "Number"
+         },
+         {
+            "name": "Failure_Criteria_Operator",
+            "required": true,
+            "key": true,
+            "secret": false,
+            "queryable": false,
+            "description": "Provide operator for high, medium, low severity failure thresholds.",
+            "type": "String"
+         } 
+],
+    "inputArtifactDetails": {
+        "maximumCount": 1,
+        "minimumCount": 0
+    },
+    "outputArtifactDetails": {
+        "maximumCount": 1,
+        "minimumCount": 0
+    }
+}
