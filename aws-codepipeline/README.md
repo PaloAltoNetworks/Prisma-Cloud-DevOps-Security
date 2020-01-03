@@ -16,7 +16,4 @@ This extension enables Prisma Cloud Infrastructure-as-Code (IaC) scan and contai
       
       
   <h2>Prisma Cloud Compute Image Scanning</h2>
-  
-    This is a sample of integration with Google Cloud Build using a custom build step to scan the image with twistcli.
-
-    cloud_build_twistcli is the Dockerfile and script necessary to build the cloud-build-twistcli Docker image for the custom build step. This must be built before scanning any builds.
+    /buildspec.yml includes details on how to use twistcli when using AWS CodeBuild
