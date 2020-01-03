@@ -97,10 +97,10 @@ update_job_status() {
 decide_job_status(){
       local job_json="$1"
       local stats="$2"
-      local in_high="$(echo "$job_json" | jq -r ".data.actionConfiguration.configuration.FailureCriteria_HighSeverity")" 
-      local in_med="$(echo "$job_json" | jq -r ".data.actionConfiguration.configuration.FailureCriteriaMediumSeverity")"
-      local in_low="$(echo "$job_json" | jq -r ".data.actionConfiguration.configuration.FailureCriteriaLowSeverity")"
-      local in_oper="$(echo "$job_json" | jq -r ".data.actionConfiguration.configuration.FailureCriteriaOperator")"
+      local in_high="$(echo "$job_json" | jq -r ".data.actionConfiguration.configuration.Failure_Criteria_High_Severity")" 
+      local in_med="$(echo "$job_json" | jq -r ".data.actionConfiguration.configuration.Failure_Criteria_Medium_Severity")"
+      local in_low="$(echo "$job_json" | jq -r ".data.actionConfiguration.configuration.Failure_Criteria_Low_Severity")"
+      local in_oper="$(echo "$job_json" | jq -r ".data.actionConfiguration.configuration.Failure_Criteria_Operator")"
 
       local resp_high="$(echo "$stats" | jq -r '.high')"
       local resp_med="$(echo "$stats" | jq -r '.medium')"
